@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+
+<body>
+
+  <h1>Registration Form</h1>
+
+  <form action="">
+    <label for="first">First Name:</label>
+    <input type="text" id="first" name="first">
+    <br>
+    <br>
+    <label for="last">Last Name:</label>
+    <input type="text" id="last" name="last">
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="8">
+    <br>
+    <br>
+    <label for="date">Birthday:</label>
+    <input type="date" id="date" name="birthday" required>
+    <br>
+    <br>
+    <label for="radio">Gender:</label><br>
+    <input type="radio" value="male" name="gender">Male<br>
+    <input type="radio" value="female" name="gender">Female<br>
+    <input type="radio" value="other" name="gender">Other<br>
+    <br>
+    <br>
+    <label for="checkbox">Pets:</label><br>
+    <input type="checkbox" name="cat"> Cat<br>
+    <input type="checkbox" name="dog"> Dog<br>
+    <input type="checkbox" name="lizard"> Lizard<br>
+    <br>
+    <br>
+    <label for="car">Cars:</label><br>
+    <select name="car" id="">
+      <option value="volvo" name="volvo">Volvo</option>
+      <option value="audi" name="audi">Audi</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Register">
+    <input type="reset" value="Clear form">
+
+    <!-- 
+      
+    Submission result 1
+
+    http://127.0.0.1:5500/register.html?
+    first=test&
+    last=test&
+    email=test%40gmail.com&
+    password=41s325d1g3gv5&
+    birthday=2022-06-02&
+    gender=male&
+    dog=on&
+    car=volvo -->
+
+  </form>
+
+</body>
+
+</html>
