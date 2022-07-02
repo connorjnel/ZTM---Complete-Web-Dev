@@ -1,0 +1,62 @@
+
+// Guess what answers you would get if you ran this in the
+// Javascript Console in Google Chrome. Once you have an answer  to the questions then 
+// check them by copying them and running it in the console yourself line by line 
+
+
+//Evaluate the below:
+5 + "34" === "534" 
+CORRECT
+5 - "4" === 1 
+CORRECT
+10 % 5 === 0 
+CORRECT
+5 % 10 === 0 
+INCORRECT, 5
+"Java" + "Script" === JavaScript 
+CORRECT
+" " + " " === 
+INCORRECT, "  ", forget to add quote marks  
+" " + 0 ===  0
+INCORRECT, " 0", forget to add quote marks  
+true + true === 2
+CORRECT, when using math on boolean treat them as 0 and 1 so just basic math
+true + false === 0
+INCORRECT, 1, when using math on boolean treat them as 0 and 1 so just basic math
+false + true === 0
+INCORRECT, 1, when using math on boolean treat them as 0 and 1 so just basic math
+false - true === 0
+INCORRECT, 1, when using math on boolean treat them as 0 and 1 so just basic math
+3 - 4 === -1
+CORRECT
+"Bob" - "bill" === NaN
+CORRECT
+
+
+//Evaluate the below comparisons:
+5 >= 1 === true
+CORRECT
+0 === 1 === false
+CORRECT
+4 <= 1 === false
+CORRECT
+1 != 1 === false
+CORRECT
+"A" > "B" === false
+CORRECT
+"B" < "C" === false
+INCORRECT, true, due to position in alphabet? ie 2 < 3 ?
+"a" > "A" === false
+INCORRECT, true, really not sure why, or how i got it corret. Maybe lowercase higher value than uppercase?
+"b" < "A" === false
+CORRECT
+true === false === false
+CORRECT
+true != true === false
+CORRECT
+
+
+// Make the string: "Hi There! It's "sunny" out" by using the + sign:
+"Hi There!" + " It's \"sunny\" out"
+INCORRECT, need to remember empty space needs to be in string and escape all quote marks even if you used double and quote is single
+Correct answer === "Hi There! " + "It\'s \"sunny\" out"
