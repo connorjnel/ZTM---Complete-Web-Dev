@@ -12,7 +12,6 @@ function randomColor() {
 	color2.value = "#" + Math.floor(Math.random() * 16777215).toString(16);
 	if (color1.value === color2.value) {
 		color1.value = "#" + Math.floor(Math.random() * 16777215).toString(16);
-		color2.value = "#" + Math.floor(Math.random() * 16777215).toString(16);
 	}
 	backgroundColor();
 }
