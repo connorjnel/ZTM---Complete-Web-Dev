@@ -25,3 +25,4 @@ color2.addEventListener("input", backgroundColor);
 randomButton.addEventListener("click", randomColor, backgroundColor);
 
 // Look into adding a direction selector for gradient in degrees
+// Random coolor solution from https://www.codegrepper.com/code-examples/javascript/generate+random+rgb+color+javascript
