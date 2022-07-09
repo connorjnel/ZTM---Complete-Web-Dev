@@ -2,7 +2,7 @@
 
 // #1 Turn this array into a new array: [1,2,3,[4],[5]]. Bonus if you can do it on one line
 const array = [[1], [2], [3], [[[4]]], [[[5]]]];
-const array2 = array.flat(Infinity - 1).flatMap((num) => num); // Worked
+const array2 = array.flat(Infinity - 1).flatMap((num) => num); // Worked, didnt need to map it though :D
 
 // Solution
 console.log(array.flat(2));
@@ -30,14 +30,15 @@ console.log(greeting.flatMap((x) => x.join(" ")).join(" "));
 //#4 Turn the trapped 3 number into: [3]
 const trapped = [[[[[[[[[[[[[[[[[[[[[[[[[[3]]]]]]]]]]]]]]]]]]]]]]]]]];
 
-const trapped2 = trapped.flat(Infinity - 1); //Works
+const trapped2 = trapped.flat(Infinity - 1); //Works, when I tried infinity only earlier didnt work? Why I use - 1
 
 //Other solution
 console.log(trapped.flat(Infinity));
 
 //#5 Clean up this email to have no whitespaces. Make the answer be in a single line (return a new string):
 const userEmail3 = "     cannotfillemailformcorrectly@gmail.com   ";
-const userEmail4 = String(userEmail3.trim()); // Works
+const userEmail4 = String(userEmail3.trim());
+// Works, to be fair though mine removes all empty spaces so maybe using trimend and trimstart smarter
 
 // Other Solution
 console.log(userEmail3.trimEnd().trimStart());
@@ -61,3 +62,5 @@ updatedUsersArray = usersArray.map((user) => [user[0], user[1] * 2]);
 // Solution
 const updatedUsers = Object.fromEntries(updatedUsersArray);
 console.log(updatedUsers);
+
+//Ya, need to remember Object.entries turns object into array and Object.fromEntries turns array into object
