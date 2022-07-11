@@ -1,0 +1,61 @@
+# How JS works
+
+## What is a program?
+
+Has to to allocate memory, parse and execute scripts (read and run commands)
+
+## JS engine - Chrome its called V8 :D
+
+- Each browser has own engine that reads and changes it into machine executable code
+- Consists of memory heap and call stack
+- Memory heap - memory allocation happens here
+- Call stack - where code is read and executed, where you are in the program
+- When you declare a variable you allocate it to memory inside memory heap
+
+## Memory leak
+
+Each variable being declared uses space in memory heap, unused memory is being used up. Why you need to use less global variables, use block or function scoped variables instead
+
+## Call Stack
+
+Reads and executes scripts, does it in sequential order, top to bottom, keeps track of where program is. Keeps a list of instructions to execute, list gets updated as instructions execute, they can move if function instructions are set up that way ie. a can run after b if function says so
+
+## JS is a single threaded language
+
+Refers to fact JS only has one call stack, first in last out
+
+## Multi threaded languages
+
+These have multiple call stacks
+
+## Synchonous programming
+
+Instructions are executed in order from top to bottom sequentially
+
+## Stackoverflow
+
+- Means stack is overflowing, it can overflow the call stack by adding instructions until it runs out of space.
+- Can happen in JS when function calls itself, causes a maximum call stack exceeded
+
+## JS Single thread
+
+- Because JS is single thread you could have a block due to large function running before smaller functions, blocks render
+- JS can be non blocking - async execution, use async keyword
+
+## setTimeout
+
+- Allows you to delay a function after a set amount of time, part of webapi.
+- Instructions using timeout are added to callback queue and executed after time runs out and call stack is empty
+- Execution happens in ms most of the time so timeout is pretty accurate at that scale
+- Once setTimeout is used instruction is pushed to the callback queue, no matter what the rest of call stack will execute first before instructions in the callback queue are executed, even if the timeout is set to 0
+
+## JS run time environment
+
+- Included in browsers
+- Webapi
+- Callback queue
+- Event loop
+
+## Event loop
+
+- Load instructions into callback queue and waits for event
