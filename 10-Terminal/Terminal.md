@@ -13,4 +13,3 @@ rm - remove file
 mv- move file or directory
 explorer - open file in browser
 code - open file in editor
-rm hello.html
