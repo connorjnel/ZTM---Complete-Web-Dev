@@ -2,17 +2,15 @@
 
 ## Commands
 
-ls - List directory contents
-pwd - Print working directory
-cd - Change directory
-cd .. - Root directory
-cd ~ - User directory
-clear - Clear your terminal window
-cd / **—> root directory**
-mkdir <folder> — Create a directory
-chmod — Sets the file permissions flag on a file or folder
-start <folder>
-echo "" > index.html
-start index.html
-del - delete file
-deltree - delete foler
+echo " " - prints whats contained in quotes to terminal
+pwd - print working directory
+ls - lists current directory contents
+cd = change working directory
+mkdir - create directory
+rmdir - remove directory
+touch - create empty file
+rm - remove file
+mv- move file or directory
+explorer - open file in browser
+code - open file in editor
+rm hello.html
