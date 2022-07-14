@@ -3,9 +3,7 @@
 	"version": "1.0.0",
 	"description": "Playing with NPM",
 	"main": "script.js",
-	"scripts": {
-		"build": "browserify script.js > bundle.js"
-	},
+	"scripts": {},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
