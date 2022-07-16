@@ -1,7 +1,7 @@
 import React from "react";
 import CardList from "./CardList";
-import { robots } from "./robots"; // still need this as im using it here
 import SearchBox from "./SearchBox";
+import { robots } from "./robots"; // still need this as im using it here
 
 class App extends React.Component {
 	constructor() {
