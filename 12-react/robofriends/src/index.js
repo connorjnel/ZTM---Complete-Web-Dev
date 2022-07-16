@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"; // import react dom for web
 import "./index.css"; // import base css stylesheet
 import reportWebVitals from "./reportWebVitals"; // import webvitals
 import "tachyons"; // import css library - need to switch to tailwind
-import App from "./App"; // cleaned up the card display to pull from seperate app
+import App from "./containers/App"; // cleaned up the card display to pull from seperate app
 
 const root = ReactDOM.createRoot(document.getElementById("root")); // element selector
 root.render(
