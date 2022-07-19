@@ -4,6 +4,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
+import Rank from "./components/Rank/Rank";
 
 const particlesInit = async (main) => {
 	console.log(main);
@@ -57,7 +58,7 @@ const particleEffect = {
 			enable: true,
 		},
 		move: {
-			direction: "left",
+			direction: "right",
 			enable: true,
 			outModes: {
 				default: "bounce",
@@ -69,7 +70,7 @@ const particleEffect = {
 		number: {
 			density: {
 				enable: true,
-				area: 800,
+				area: 700,
 			},
 			value: 50,
 		},
@@ -92,6 +93,7 @@ function App() {
 			<Particles className="particles" id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={particleEffect} />
 			<Navigation />
 			<Logo />
+			<Rank />
 			{/*<ImageLinkForm />
       <FaceRecognition /> */}
 		</div>

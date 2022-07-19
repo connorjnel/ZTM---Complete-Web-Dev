@@ -4,3 +4,12 @@ body {
   font-family: sans-serif;
   background: linear-gradient(89deg, #ff5edf 0%, #04c8de 100%);
 }
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
