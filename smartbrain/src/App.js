@@ -1,7 +1,8 @@
-import React from "react";
+import { Component } from "react";
 import "./App.css";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import Clarifai from "clarifai";
 import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
@@ -11,9 +12,14 @@ const particlesInit = async (main) => {
 	// console.log(main);
 	await loadFull(main);
 };
+
 const particlesLoaded = (container) => {
 	console.log(container);
 };
+
+const app = new Clarifai.App({
+	apiKey: "31d620786ef54bf284c3cf3abe53fd97",
+});
 
 const particleEffect = {
 	particles: {
@@ -85,7 +91,7 @@ const particleEffect = {
 		},
 	},
 	interactivity: {
-		detect_on: "canvas",
+		detect_on: "window",
 		events: {
 			onhover: {
 				enable: true,
@@ -126,17 +132,54 @@ const particleEffect = {
 	retina_detect: true,
 };
 
-function App() {
-	return (
-		<div className="App">
-			<Particles className="particles" id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={particleEffect} />
-			<Navigation />
-			<Logo />
-			<Rank />
-			<ImageLinkForm />
-			{/*<FaceRecognition /> */}
-		</div>
-	);
+class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			input: "",
+		};
+	}
+
+	onInputChange = (event) => {
+		console.log(event.target.value);
+	};
+
+	onButtonSubmit = () => {
+		this.setState({ imageUrl: this.state.input });
+		app.models
+			.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+			.then((response) => {
+				console.log("hi", response);
+				if (response) {
+					fetch("http://localhost:3000/image", {
+						method: "put",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							id: this.state.user.id,
+						}),
+					})
+						.then((response) => response.json())
+						.then((count) => {
+							this.setState(Object.assign(this.state.user, { entries: count }));
+						});
+				}
+				this.displayFaceBox(this.calculateFaceLocation(response));
+			})
+			.catch((err) => console.log(err));
+	};
+
+	render() {
+		return (
+			<div className="App">
+				<Particles className="particles" id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={particleEffect} />
+				<Navigation />
+				<Logo />
+				<Rank />
+				<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+				{/*<FaceRecognition /> */}
+			</div>
+		);
+	}
 }
 
 export default App;
