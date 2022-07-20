@@ -8,6 +8,7 @@ import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import Signin from "./components/Signin/Signin";
 
 const particlesInit = async (main) => {
 	// console.log(main);
@@ -35,7 +36,7 @@ const particleEffect = {
 			value: "#ffffff",
 		},
 		shape: {
-			type: "circle",
+			type: "triangle",
 			stroke: {
 				width: 0,
 				color: "#000000",
@@ -78,7 +79,7 @@ const particleEffect = {
 		},
 		move: {
 			enable: true,
-			speed: 6,
+			speed: 4,
 			direction: "none",
 			random: false,
 			straight: false,
@@ -140,6 +141,7 @@ class App extends Component {
 			input: "",
 			imageUrl: "",
 			box: {},
+			route: "signin",
 		};
 	}
 
@@ -172,15 +174,25 @@ class App extends Component {
 			.catch((error) => console.log(error));
 	};
 
+	onRouteChange = () => {
+		this.setState({ route: "home" });
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<Particles className="particles" id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={particleEffect} />
 				<Navigation />
-				<Logo />
-				<Rank />
-				<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-				<FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box} />
+				{this.state.route === "signin" ? (
+					<Signin onRouteChange={this.onRouteChange} />
+				) : (
+					<>
+						<Logo />
+						<Rank />
+						<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+						<FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box} />
+					</>
+				)}
 			</div>
 		);
 	}
