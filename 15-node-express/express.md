@@ -11,6 +11,8 @@
 - middleware - app.use(req, res, next). next needs to be defined before rest of code gets run. next()
 - use postman or thunder client to test response and requests, for postman make sure to open desktop app if working locally
 
+- retrieve header using get in express - req.headers
+
 ## Body parser - present in express 4.16+
 
 app.use(express.urlencoded({extended: false}));
