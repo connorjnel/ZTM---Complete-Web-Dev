@@ -35,3 +35,4 @@
 - Need to set up server.listen to listen for request, can use port or hostname or callback as argument
 
 - request.setHeader content type can be set to "application/json", can then send objects via JSON.stringify(obj)
+- instead of using http express is a better option honestly
