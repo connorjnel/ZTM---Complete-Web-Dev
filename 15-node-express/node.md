@@ -20,6 +20,7 @@
 - NOTE - require is the better option actually, older versions of node are kinda prevalent (creating npm packages)
 - TIP - npm init to create package.json
 - TIP - npm -y = says yes to the options for init
+
 - Module Self built, using import/require and export
 - Module Built in, ie fs module, allows you to read files on file system and manipulate them. http module, let you build server
 - Module npm - Packages from npm,
@@ -32,3 +33,5 @@
 - Can set a response - load page, output text etc
 - For request can get details about headers, method etc
 - Need to set up server.listen to listen for request, can use port or hostname or callback as argument
+
+- request.setHeader content type can be set to "application/json", can then send objects via JSON.stringify(obj)
