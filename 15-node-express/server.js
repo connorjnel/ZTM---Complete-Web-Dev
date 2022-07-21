@@ -15,10 +15,34 @@
 
 // server.listen(3000);
 
-import express from "express";
+// app.get("/", (req, res) => {
+// 	const user = {
+// 		name: "steve",
+// 		hobby: "blurb",
+// 	};
+// 	res.send(user);
+// });
 
+import express from "express";
 const app = express();
 
-app.get("/", (req, res) => {});
+app.use(express.urlencoded({ extended: false }));
+
+app.get("/", (req, res) => {
+	res.send("getting root");
+});
+
+app.get("/profile", (req, res) => {
+	res.send("getting profile");
+});
+
+app.post("/profile", (req, res) => {
+	console.log(req.body);
+	const user = {
+		name: "jake",
+		hobby: "bullshit",
+	};
+	res.send(user);
+});
 
 app.listen(3000);
