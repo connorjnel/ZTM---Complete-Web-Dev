@@ -17,3 +17,5 @@
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+- Dont use req.header (will return function declaration only), use req.headers instead
