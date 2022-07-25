@@ -22,15 +22,9 @@ const database = {
 			id: "124",
 			name: "Sally",
 			email: "saly@gmail.com",
+			password: "cookies",
 			entries: 0,
 			joined: new Date(),
-		},
-	],
-	login: [
-		{
-			id: "987",
-			hash: "",
-			email: "john@gmail.com",
 		},
 	],
 };
