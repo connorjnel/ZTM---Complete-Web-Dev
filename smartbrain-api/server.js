@@ -65,6 +65,24 @@ app.get("/profile/:id", (req, res) => {
 		}
 	});
 	if (!found) {
+		res.status(400);
+		res.json("No such user found");
+	}
+});
+
+// Image / Submission Count
+app.put("/image", (req, res) => {
+	const { id } = req.body;
+	let found = false;
+	database.users.forEach((user) => {
+		if (user.id === id) {
+			found = true;
+			user.entries++;
+			return res.json(user.entries);
+		}
+	});
+	if (!found) {
+		res.status(400);
 		res.json("No such user found");
 	}
 });
@@ -79,5 +97,5 @@ app.listen(3000, () => {
 /signin --> POST success/fail (using POST for security instead of GET)
 /register --> POST user 
 /profile/:userId --> GET = user
-/image --> PUT (update user profile) user
+/image --> PUT (update user profile) user (submission count)
 */
