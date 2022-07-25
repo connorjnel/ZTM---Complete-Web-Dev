@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcrypt-nodejs");
 
 const app = express();
 
@@ -19,9 +20,15 @@ const database = {
 			id: "124",
 			name: "Sally",
 			email: "saly@gmail.com",
-			password: "bananas",
 			entries: 0,
 			joined: new Date(),
+		},
+	],
+	login: [
+		{
+			id: "987",
+			hash: "",
+			email: "john@gmail.com",
 		},
 	],
 };
@@ -91,6 +98,20 @@ app.put("/image", (req, res) => {
 app.listen(3000, () => {
 	console.log("App is running on port 3000");
 });
+
+// Bcryipt examples
+
+// bcrypt.hash("bacon", null, null, function (err, hash) {
+// 	// Store hash in your password DB.
+// });
+
+// // Load hash from your password DB.
+// bcrypt.compare("bacon", hash, function (err, res) {
+// 	// res == true
+// });
+// bcrypt.compare("veggies", hash, function (err, res) {
+// 	// res = false
+// });
 
 /* API Plan
 / res --> this is working
