@@ -17,7 +17,7 @@ class Signin extends React.Component {
 		this.setState({ signInPassword: event.target.value });
 	};
 
-	onsSubmitSignIn = () => {
+	onSubmitSignIn = () => {
 		fetch("http://localhost:3000/signin", {
 			method: "post",
 			headers: { "Content-Type": "application/json" },
@@ -56,7 +56,7 @@ class Signin extends React.Component {
 							</div>
 						</fieldset>
 						<div className="">
-							<input onClick={this.onsSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" />
+							<input onClick={this.onSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" />
 						</div>
 						<div className="lh-copy mt3 pointer">
 							<p onClick={() => onRouteChange("register")} className="f6 link dim black db">
