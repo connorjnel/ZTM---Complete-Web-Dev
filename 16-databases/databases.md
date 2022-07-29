@@ -28,3 +28,9 @@ CREATE DATABASE name; - create a database
 CREATE TABLE tablename (column_1 datatype, column_2 datatype); - Create a table inside database with set data type
 \d - list database tables (when logged into a db)
 \q - exit psql and go back to shell
+INSERT INTO table_name(column1, column2, column3) VALUES (value1, value2, value3); - Add data to db, specify column and values
+tip - dont have to add to all columns, can use just 1
+tip - sql is case insensitive, uppercase just convention
+tip - for sql when using quotes for strings etc use single quotes, not double
+SELECT column1, column2, column3 FROM table-name - Show data from columns
+tip - to show all can use wildcard instead - SELECT `*` FROM table-name
