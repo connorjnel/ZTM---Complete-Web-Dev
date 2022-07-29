@@ -148,7 +148,7 @@ class App extends Component {
 				id: "",
 				name: "",
 				email: "",
-				password: "",
+				// password: "",
 				entries: 0,
 				joined: "",
 			},
@@ -161,7 +161,7 @@ class App extends Component {
 				id: data.id,
 				name: data.name,
 				email: data.email,
-				password: data.password,
+				// password: data.password,
 				entries: data.entries,
 				joined: data.joined,
 			},
@@ -193,7 +193,12 @@ class App extends Component {
 		this.setState({ imageUrl: this.state.input });
 		app.models
 			.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-			.then((response) => this.displayFaceBox(this.calculateFaceLocation(response)))
+			.then((response) => {
+				if (response) {
+					fetch("http://localhost:3000/image");
+				}
+				this.displayFaceBox(this.calculateFaceLocation(response));
+			})
 			.catch((error) => console.log(error));
 	};
 
@@ -215,12 +220,12 @@ class App extends Component {
 				{route === "home" ? (
 					<>
 						<Logo />
-						<Rank />
+						<Rank name={this.state.user.name} entries={this.state.user.entries} />
 						<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
 						<FaceRecognition imageUrl={imageUrl} box={box} />
 					</>
 				) : route === "signin" ? (
-					<Signin onRouteChange={this.onRouteChange} />
+					<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
 				) : (
 					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				)}
