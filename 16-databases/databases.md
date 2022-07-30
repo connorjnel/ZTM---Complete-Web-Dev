@@ -57,3 +57,33 @@
   Filters table to show results that column name value starts with A - case sensitive
 - SELECT `*` FROM users ORDER BY score DESC;
   Order results using column by descending order, ASC for ascending order
+- SELECT AVG(column) FROM table_name;
+  shows average of column
+- SELECT SUM(column) FROM table_name;
+  shows sum of column
+- SELECT COUNT(column) FROM table_name;
+  shows count of column
+
+## Creating login database
+
+`CREATE TABLE login ( ID serial NOT NULL PRIMARY KEY, secret VARCHAR (100) NOT NULL, name text UNIQUE NOT NULL );`
+Create a table called login,
+first column is called serial, has auto incrementing number for datatype and cant be empty and is primary db key
+second column is called secret, has variable length string as datatype, cant be empty
+final column is called name, datatype is text and it has tobe unique and not empty
+
+## Joining tables
+
+- TIP  
+  Data is stored in different tables because its more efficient that way, almost like seperation of concerns
+- `SELECT * FROM users JOIN login ON users.name = login.name;`
+  Join tables together using key column that exists in both tables ie. name.
+
+## Delete value from table / Delete whole table
+
+- `DELETE FROM users WHERE name='Sally';`
+  Delete user sally from users table, please use carefully
+- `DROP TABLE login;`
+  Delete whole table - careful
+- `ALTER TABLE users DROP COLUMN score;`
+  Remove column from table
