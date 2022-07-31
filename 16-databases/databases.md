@@ -87,3 +87,7 @@ final column is called name, datatype is text and it has tobe unique and not emp
   Delete whole table - careful
 - `ALTER TABLE users DROP COLUMN score;`
   Remove column from table
+
+## Codecademy SQL
+
+Finished in a few hours, if needing to refresh on SQL do that course again, way more in depth
