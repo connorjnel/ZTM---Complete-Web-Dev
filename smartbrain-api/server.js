@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
 
-const postgres = knex({
+const db = knex({
 	client: "pg",
 	connection: {
 		host: "127.0.0.1",
@@ -14,13 +14,11 @@ const postgres = knex({
 	},
 });
 
-console.log(postgres.select("*").from("users"));
-
-const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(cors());
+db.select("*")
+	.from("users")
+	.then((data) => {
+		// console.log(data);
+	});
 
 const database = {
 	users: [
@@ -43,6 +41,12 @@ const database = {
 	],
 };
 
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors());
+
 // Root
 app.get("/", (req, res) => {
 	res.send(database.users);
@@ -61,47 +65,46 @@ app.post("/signin", (req, res) => {
 // Register
 app.post("/register", (req, res) => {
 	const { email, name, password } = req.body;
-	database.users.push({
-		id: "125",
-		name: name,
-		email: email,
-		entries: 0,
-		joined: new Date(),
-	});
-	res.json(database.users[database.users.length - 1]);
+	db("users")
+		.returning("*")
+		.insert({
+			email: email,
+			name: name,
+			joined: new Date(),
+		})
+		.then((user) => {
+			res.json(user[0]);
+		})
+		.catch((err) => res.status(400).json("Unable to register"));
 });
 
 // Profile
 app.get("/profile/:id", (req, res) => {
 	const { id } = req.params;
-	let found = false;
-	database.users.forEach((user) => {
-		if (user.id === id) {
-			found = true;
-			return res.json(user);
-		}
-	});
-	if (!found) {
-		res.status(400);
-		res.json("No such user found");
-	}
+	db.select("*")
+		.from("users")
+		.where({ id: id })
+		.then((user) => {
+			if (user.length > 0) {
+				res.json(user[0]);
+			} else {
+				res.status(400).json("User not found");
+			}
+		})
+		.catch((err) => res.status(400).json("Error getting user"));
 });
 
 // Image / Submission Count
 app.put("/image", (req, res) => {
 	const { id } = req.body;
-	let found = false;
-	database.users.forEach((user) => {
-		if (user.id === id) {
-			found = true;
-			user.entries++;
-			return res.json(user.entries);
-		}
-	});
-	if (!found) {
-		res.status(400);
-		res.json("No such user found");
-	}
+	db("users")
+		.where("id", "=", id)
+		.increment("entries", 1)
+		.returning("entries")
+		.then((entries) => {
+			res.json(entries[0].entries);
+		})
+		.catch((err) => res.status(400).json("Unable to get count"));
 });
 
 // Listener
