@@ -33,3 +33,11 @@ Code reviews are methodical assessments of code designed to identify bugs, incre
 - Can also use for PORT, DATABASE URL etc
 - Bash set port `PORT=3000 node server.js`
 - Environment varibale
+
+## Heroku Deployment - prefer docker
+
+- Need to install heroku in windows and then heroku extension for vscode, twitchy
+- `heroku create`
+- `git remote -v` - make sure heroku remote is correct
+- `git push heroku master` - push repo to heroku
+- `heroku logs --tail` - check logs for remote app
