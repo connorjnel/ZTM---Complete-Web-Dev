@@ -24,3 +24,12 @@ Code reviews are methodical assessments of code designed to identify bugs, incre
 - Do validation on both frontend (form, inputs, submit button) and on backend, make sure data is in correct format
 - Backend shouldnt trust frontend input, check it as well, double validation
 - When using API keys dont send them in the clear, can be extracted from headers
+
+## Environment Variables
+
+- Dont hardcode what port is being listened to, fine for dev but when deploying needs to be variable
+- Check environment on node `console.log(process.env);`
+- Can set environment variable as constant, use capital letters for this kind of variable
+- Can also use for PORT, DATABASE URL etc
+- Bash set port `PORT=3000 node server.js`
+- Environment varibale
